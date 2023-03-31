@@ -1,4 +1,6 @@
-
+body {
+    
+}
 
 .gameTitle {
    display: flex;
@@ -43,7 +45,9 @@
 }
 
 .options {
-    padding-left: 196px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
  
     
@@ -71,7 +75,7 @@
 }
 .btnRock, .btnPaper, .btnScissors {
     display: inline-block;
-        background-color: #774427e5;
+        background-color: #5e3a25e3;
         padding: 20px;
         width: 100px;
         color: #ffffff;
