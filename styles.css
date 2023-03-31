@@ -1,0 +1,90 @@
+
+
+.gameTitle {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-family: "Brush Script MT", cursive;
+}
+
+.container {
+    border: 3px solid black;
+    width: 1398px;
+    height: 800px;
+    
+
+}
+
+
+
+.scores {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+ 
+
+.playerScore {
+    width: 500px;
+    height: 400px;
+    border: 3px solid black;
+    font-size: 30px;
+    
+}
+
+.computerScore {
+    width: 500px;
+    height: 400px;
+    border: 3px solid black;
+    font-size: 30px;
+    
+}
+
+.options {
+    padding-left: 196px;
+
+ 
+    
+ }
+ 
+
+.result {
+    width: 1006px;
+    height: 80px;
+    border: 3px solid black;
+
+}
+
+
+
+.btns {
+    width: 1006px;
+    height: 200px;
+    border: 3px solid black;
+    background-image: linear-gradient(red, yellow, green);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.btnRock, .btnPaper, .btnScissors {
+    display: inline-block;
+        background-color: #774427e5;
+        padding: 20px;
+        width: 100px;
+        color: #ffffff;
+        text-align: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.resetBtn {
+    display: inline-block;
+        background-color: #378dbe;
+        padding: 20px;
+        width: 100px;
+        color: #ffffff;
+        text-align: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

@@ -27,8 +27,8 @@ function game() {
   }
 
   for (let i = 0; i < 9; i++) {
-    const playerSelection = prompt("enter").toLowerCase();
-    const computerSelection = getComputerchoice();
+    //const playerSelection = prompt("enter").toLowerCase();
+    //const computerSelection = getComputerchoice();
     let result = playRound(playerSelection, computerSelection);
     if (result === "you win") {
       playerScore++;
@@ -44,13 +44,13 @@ function game() {
     console.log(`You chose ${playerSelection}, cpu chose ${computerSelection}`);
     console.log(playerScore, cpuScore);
 
-    if (playerScore === 5) {
+    /*if (playerScore === 5) {
       alert("holy moly you won");
       break;
     } else if (cpuScore === 5) {
       alert("better luck next time");
       break;
-    }
+    }*/
   }
   restart();
 }
