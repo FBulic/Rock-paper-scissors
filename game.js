@@ -29,15 +29,15 @@ function nextRound() {
 
 function computerDisplayImg(computerSelection) {
   if (computerSelection === "rock") {
-    cpuImg.src = "/pictures/the rock.jpg";
+    cpuImg.src = "./pictures/the rock.jpg";
     cpuImg.classList.add("displayImg");
     computerImgDiv.appendChild(cpuImg);
   } else if (computerSelection === "scissors") {
-    cpuImg.src = "/pictures/scissors.jpg";
+    cpuImg.src = "./pictures/scissors.jpg";
     cpuImg.classList.add("displayImg");
     computerImgDiv.appendChild(cpuImg);
   } else if (computerSelection === "paper") {
-    cpuImg.src = "/pictures/paper.jpg";
+    cpuImg.src = "./pictures/paper.jpg";
     cpuImg.classList.add("displayImg");
     computerImgDiv.appendChild(cpuImg);
   }
@@ -89,7 +89,7 @@ rockBtn.addEventListener("click", () => {
   nextRound();
   playerImgDiv.appendChild(rockImg);
   rockImg.classList.add("displayImg");
-  rockImg.src = "/pictures/the rock.jpg";
+  rockImg.src = "./pictures/the rock.jpg";
   computerDisplayImg(computerSelection);
   resultDiv.textContent = `You chose ${playerSelection}, computer chose ${computerSelection}`;
   playRound(playerSelection, computerSelection);
@@ -100,7 +100,7 @@ paperBtn.addEventListener("click", () => {
   let computerSelection = getComputerchoice();
   nextRound();
   paperImg.classList.add("displayImg");
-  paperImg.src = "/pictures/paper.jpg";
+  paperImg.src = "./pictures/paper.jpg";
   playerImgDiv.appendChild(paperImg);
   computerDisplayImg(computerSelection);
   resultDiv.textContent = `You chose ${playerSelection}, computer chose ${computerSelection}`;
@@ -112,7 +112,7 @@ scissorsBtn.addEventListener("click", () => {
   let computerSelection = getComputerchoice();
   nextRound();
   scissorsImg.classList.add("displayImg");
-  scissorsImg.src = "/pictures/scissors.jpg";
+  scissorsImg.src = "./pictures/scissors.jpg";
   playerImgDiv.appendChild(scissorsImg);
   computerDisplayImg(computerSelection);
   resultDiv.textContent = `You chose ${playerSelection}, computer chose ${computerSelection}`;
