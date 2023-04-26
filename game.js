@@ -1,6 +1,47 @@
+const rockBtn = document.querySelector(".btnRock");
+const paperBtn = document.querySelector(".btnPaper");
+const scissorsBtn = document.querySelector(".btnScissors");
+const resetBtn = document.querySelector(".resetBtn");
+const resultDiv = document.querySelector(".result");
+const playerScore = document.querySelector(".plyrScore");
+const computerScore = document.querySelector(".cpuScore");
+const playerImgDiv = document.querySelector(".playerImgDiv");
+const computerImgDiv = document.querySelector(".computerImgDiv");
 const gameChoices = ["rock", "paper", "scissors"];
-let playerScore = 0;
-let cpuScore = 0;
+let paperImg = document.createElement("img");
+let scissorsImg = document.createElement("img");
+let rockImg = document.createElement("img");
+let cpuImg = document.createElement("img");
+let scoreOne = 0;
+let scoreTwo = 0;
+let result;
+let playerSelection;
+let computerSelection;
+
+resetBtn.disabled = true;
+
+function nextRound() {
+  rockImg.remove();
+  paperImg.remove();
+  scissorsImg.remove();
+  cpuImg.remove();
+}
+
+function computerDisplayImg(computerSelection) {
+  if (computerSelection === "rock") {
+    cpuImg.src = "/pictures/the rock.jpg";
+    cpuImg.classList.add("displayImg");
+    computerImgDiv.appendChild(cpuImg);
+  } else if (computerSelection === "scissors") {
+    cpuImg.src = "/pictures/scissors.jpg";
+    cpuImg.classList.add("displayImg");
+    computerImgDiv.appendChild(cpuImg);
+  } else if (computerSelection === "paper") {
+    cpuImg.src = "/pictures/paper.jpg";
+    cpuImg.classList.add("displayImg");
+    computerImgDiv.appendChild(cpuImg);
+  }
+}
 
 function getComputerchoice() {
   let compChoice = gameChoices[Math.floor(Math.random() * gameChoices.length)];
@@ -11,47 +52,73 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return "draw";
   } else if (playerSelection === "rock") {
-    return computerSelection === "paper" ? "you lose" : "you win";
+    result = computerSelection === "paper" ? "you lose" : "you win";
   } else if (playerSelection === "paper") {
-    return computerSelection === "scissors" ? "you lose" : "you win";
+    result = computerSelection === "scissors" ? "you lose" : "you win";
   } else if (playerSelection === "scissors") {
-    return computerSelection === "rock" ? "you lose" : "you win";
-  } else {
-    return "am i a joke to you?";
+    result = computerSelection === "rock" ? "you lose" : "you win";
+  }
+  if (result === "you win") {
+    scoreOne++;
+    playerScore.textContent = `Player score: ${scoreOne}`;
+  } else if (result === "you lose") {
+    scoreTwo++;
+    computerScore.textContent = `Computer score: ${scoreTwo}`;
+  }
+
+  if (scoreOne === 5) {
+    rockBtn.disabled = true;
+    scissorsBtn.disabled = true;
+    paperBtn.disabled = true;
+    resetBtn.disabled = false;
+    resultDiv.textContent = "Good job you won!!1!";
+    resultDiv.style.color = "#25c202";
+  } else if (scoreTwo === 5) {
+    rockBtn.disabled = true;
+    scissorsBtn.disabled = true;
+    paperBtn.disabled = true;
+    resetBtn.disabled = false;
+    resultDiv.style.color = "#c40808";
+    resultDiv.textContent = "You lost... just uninstall pls";
   }
 }
 
-function game() {
-  function restart() {
-    location.reload();
-  }
+rockBtn.addEventListener("click", () => {
+  let playerSelection = "rock";
+  let computerSelection = getComputerchoice();
+  nextRound();
+  playerImgDiv.appendChild(rockImg);
+  rockImg.classList.add("displayImg");
+  rockImg.src = "/pictures/the rock.jpg";
+  computerDisplayImg(computerSelection);
+  resultDiv.textContent = `You chose ${playerSelection}, computer chose ${computerSelection}`;
+  playRound(playerSelection, computerSelection);
+});
 
-  for (let i = 0; i < 9; i++) {
-    //const playerSelection = prompt("enter").toLowerCase();
-    //const computerSelection = getComputerchoice();
-    let result = playRound(playerSelection, computerSelection);
-    if (result === "you win") {
-      playerScore++;
-    } else if (result === "you lose") {
-      cpuScore++;
-    } else if (result === "draw") {
-      i--;
-    } else {
-      i--;
-      alert(result);
-    }
+paperBtn.addEventListener("click", () => {
+  let playerSelection = "paper";
+  let computerSelection = getComputerchoice();
+  nextRound();
+  paperImg.classList.add("displayImg");
+  paperImg.src = "/pictures/paper.jpg";
+  playerImgDiv.appendChild(paperImg);
+  computerDisplayImg(computerSelection);
+  resultDiv.textContent = `You chose ${playerSelection}, computer chose ${computerSelection}`;
+  playRound(playerSelection, computerSelection);
+});
 
-    console.log(`You chose ${playerSelection}, cpu chose ${computerSelection}`);
-    console.log(playerScore, cpuScore);
+scissorsBtn.addEventListener("click", () => {
+  let playerSelection = "scissors";
+  let computerSelection = getComputerchoice();
+  nextRound();
+  scissorsImg.classList.add("displayImg");
+  scissorsImg.src = "/pictures/scissors.jpg";
+  playerImgDiv.appendChild(scissorsImg);
+  computerDisplayImg(computerSelection);
+  resultDiv.textContent = `You chose ${playerSelection}, computer chose ${computerSelection}`;
+  playRound(playerSelection, computerSelection);
+});
 
-    /*if (playerScore === 5) {
-      alert("holy moly you won");
-      break;
-    } else if (cpuScore === 5) {
-      alert("better luck next time");
-      break;
-    }*/
-  }
-  restart();
-}
-game();
+resetBtn.addEventListener("click", () => {
+  location.reload();
+});
